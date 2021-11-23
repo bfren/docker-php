@@ -10,17 +10,17 @@ export BF_E=`basename ${0}`
 
 DOWNLOADED="${PHP_DIR}/php.ini-${PHP_INI}.downloaded"
 if [ -e ${DOWNLOADED} ] ; then
-    bf-done
+    bf-debug "php.ini already downloaded."
     exit 0
 fi
 
 if [ "${PHP_INI}" = "development" ] || [ "${PHP_INI}" = "production" ] ; then
 
     URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-${PHP_INI}"
-    bf-echo "Downloading php.ini from ${URL}..."
+    bf-debug "Downloading php.ini from ${URL}..."
     wget -O ${PHP_DIR}/php.ini ${URL} \
         && touch ${DOWNLOADED}
-    bf-done
+    bf-debug "Done."
     exit 0
 
 fi

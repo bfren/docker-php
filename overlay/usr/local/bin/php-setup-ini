@@ -36,7 +36,7 @@ replace-ini () {
 # Optionally override configuration.
 #======================================================================================================================
 
-bf-echo "Setting php.ini configuration values..."
+bf-debug "Setting php.ini configuration values..."
 
 declare -A VALUES
 VALUES["display_errors"]="${PHP_INI_DISPLAY_ERRORS-}"
@@ -49,4 +49,4 @@ VALUES["session.gc_maxlifetime"]="${PHP_SESSION_MAX_LIFETIME-}"
 
 replace-ini VALUES ${PHP_DIR}/php.ini
 
-bf-done
+bf-debug "Done."
