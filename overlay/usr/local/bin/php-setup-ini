@@ -1,0 +1,84 @@
+#!/bin/bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get php.ini.
+#======================================================================================================================
+
+DOWNLOADED="${PHP_DIR}/php.ini-${PHP_INI}.downloaded"
+if [ -e ${DOWNLOADED} ] ; then
+    bf-done
+    exit 0
+fi
+
+if [ "${PHP_INI}" = "development" ] || [ "${PHP_INI}" = "production" ] ; then
+
+    URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-${PHP_INI}"
+    bf-echo "Downloading php.ini from ${URL}..."
+    wget -O ${PHP_DIR}/php.ini ${URL} \
+        && touch ${DOWNLOADED}
+    bf-done
+    exit 0
+
+fi
+
+bf-error "Unsupported PHP_INI value '${PHP_INI}'."
+
+
+#======================================================================================================================
+# Replace configuration values in a file.
+#
+# Arguments
+#   1   name of array of key/value pairs
+#   2   path to the configuration file
+#======================================================================================================================
+
+replace-ini () {
+
+    # get array and file
+    local -n A=${1}
+    FILE=${2}
+
+    bf-debug "Replacing configuration values in ${FILE}."
+
+    # loop
+    for KEY in ${!A[@]} ; do
+        VAL=${A[$KEY]}
+        if [ ! -z "${VAL}" ] ; then
+            bf-debug "${KEY}=${VAL}." "replace-ini"
+            sed -i "s|^;\?${KEY}.*$|${KEY} = ${VAL}|i" ${FILE}
+        fi
+    done
+
+}
+
+
+#======================================================================================================================
+# Optionally override configuration.
+#======================================================================================================================
+
+bf-echo "Setting php.ini configuration values..."
+
+declare -A VALUES
+VALUES["display_errors"]="${PHP_INI_DISPLAY_ERRORS-}"
+VALUES["display_startup_errors"]="${PHP_INI_DISPLAY_STARTUP_ERRORS-}"
+VALUES["error_log"]="${PHP_INI_ERROR_LOG-}"
+VALUES["error_reporting"]="${PHP_INI_ERROR_REPORTING-}"
+VALUES["memory_limit"]="${PHP_INI_MEMORY_LIMIT-}"
+VALUES["post_max_size"]="${PHP_INI_MAX_POST-}"
+VALUES["session.gc_maxlifetime"]="${PHP_SESSION_MAX_LIFETIME-}"
+VALUES["upload_max_filesize"]="${PHP_INI_MAX_UPLOAD-}"
+
+replace-ini VALUES ${PHP_DIR}/php.ini
+
+bf-done
+
+
+#======================================================================================================================
+# Ready to go.
+#======================================================================================================================
+
+bf-echo "PHP ready."
