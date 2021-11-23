@@ -36,6 +36,11 @@ bf-echo "Installing PHP v${VERSION}..."
 chmod +x ./install-php && ./install-php ${VERSION}
 bf-done
 
+URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-production"
+bf-echo "Downloading php.ini from ${URL}..."
+wget -O ${PHP_DIR}/php.ini ${URL}
+bf-done
+
 
 #======================================================================================================================
 # Cleanup.
