@@ -12,7 +12,7 @@ ENV \
     # php.ini override: display_startup_errors
     PHP_INI_DISPLAY_STARTUP_ERRORS= \
     # php.ini override: error_log
-    PHP_INI_ERROR_LOG="/var/log/php7/error.log" \
+    PHP_INI_ERROR_LOG="/var/log/php8/error.log" \
     # php.ini override: err-r_reporting
     PHP_INI_ERROR_REPORTING= \
     # php.ini override: memory_limit
@@ -24,4 +24,4 @@ COPY ./8.0-edge/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
 
-ENTRYPOINT [ "php-setup-ini" ]
+ENTRYPOINT [ "/init" ]

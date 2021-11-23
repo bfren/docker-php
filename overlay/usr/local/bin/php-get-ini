@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get php.ini.
+#======================================================================================================================
+
+DOWNLOADED="${PHP_DIR}/php.ini-${PHP_INI}.downloaded"
+if [ -e ${DOWNLOADED} ] ; then
+    bf-done
+    exit 0
+fi
+
+if [ "${PHP_INI}" = "development" ] || [ "${PHP_INI}" = "production" ] ; then
+
+    URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-${PHP_INI}"
+    bf-echo "Downloading php.ini from ${URL}..."
+    wget -O ${PHP_DIR}/php.ini ${URL} \
+        && touch ${DOWNLOADED}
+    bf-done
+    exit 0
+
+fi
+
+bf-error "Unsupported PHP_INI value '${PHP_INI}'."
