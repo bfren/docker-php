@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -euo pipefail
+export BF_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Get php.ini.
+#======================================================================================================================
+
+if [ "${PHP_INI}" = "development" ] ; then
+
+    URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-development"
+    bf-debug "Downloading php.ini from ${URL}..."
+    wget -q -O ${PHP_DIR}/php.ini ${URL} \
+        && touch ${DOWNLOADED}
+    bf-debug "Done."
+
+fi
