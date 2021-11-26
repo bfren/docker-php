@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.12-1.0.0
+FROM bfren/alpine:alpine3.12-1.1.0
 
 ENV \
     # disable debug messages by default
