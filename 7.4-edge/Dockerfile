@@ -1,4 +1,7 @@
-FROM bfren/alpine:alpineedge-1.1.0
+FROM bfren/alpine:alpineedge-1.2.2
+
+ARG BF_IMAGE
+ARG BF_VERSION
 
 ENV \
     # disable debug messages by default
