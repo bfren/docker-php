@@ -1,4 +1,7 @@
-FROM bfren/alpine:alpineedge-1.1.0
+FROM bfren/alpine:alpineedge-1.2.2
+
+ARG BF_IMAGE
+ARG BF_VERSION
 
 ENV \
     # disable debug messages by default
@@ -19,11 +22,11 @@ ENV \
     PHP_INI_MEMORY_LIMIT="256M"
 
 COPY ./overlay /
-COPY ./8.0/overlay /
+COPY ./8.0-edge/overlay /
 COPY ./8.0-edge/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
 
-VOLUME [ "/src" ]
+VOLUME [ "/ws" ]
 
 ENTRYPOINT [ "/init" ]

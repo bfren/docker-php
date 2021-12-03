@@ -1,4 +1,7 @@
-FROM bfren/alpine:alpine3.15-1.1.0
+FROM bfren/alpine:alpine3.15-1.2.2
+
+ARG BF_IMAGE
+ARG BF_VERSION
 
 ENV \
     # disable debug messages by default
@@ -24,6 +27,6 @@ COPY ./7.4/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
 
-VOLUME [ "/src" ]
+VOLUME [ "/ws" ]
 
 ENTRYPOINT [ "/init" ]
