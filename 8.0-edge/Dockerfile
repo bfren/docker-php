@@ -27,6 +27,6 @@ COPY ./8.0-edge/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
 
-VOLUME [ "/src" ]
+VOLUME [ "/ws" ]
 
 ENTRYPOINT [ "/init" ]

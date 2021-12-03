@@ -27,6 +27,6 @@ COPY ./7.3/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
 
-VOLUME [ "/src" ]
+VOLUME [ "/ws" ]
 
 ENTRYPOINT [ "/init" ]
