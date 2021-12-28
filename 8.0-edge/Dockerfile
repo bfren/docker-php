@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpineedge-1.3.0
+FROM bfren/alpine:alpineedge-1.3.2
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -22,7 +22,7 @@ ENV \
     PHP_INI_MEMORY_LIMIT="256M"
 
 COPY ./overlay /
-COPY ./8.0-edge/overlay /
+COPY ./8.0/overlay /
 COPY ./8.0-edge/PHP_BUILD /tmp/VERSION
 
 RUN bf-install
