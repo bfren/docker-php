@@ -13,7 +13,7 @@ apk add --no-cache \
 
 
 #======================================================================================================================
-# Create symlink so PHP can be called on the commandline using php-fpm.
+# Create symlinks so PHP can be called on the commandline using php and php-fpm.
 #======================================================================================================================
 
 ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
