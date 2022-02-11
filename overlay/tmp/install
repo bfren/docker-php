@@ -19,7 +19,7 @@ chmod +x /usr/local/bin/php-*
 cd /tmp
 
 VERSION=$(cat VERSION)
-bf-debug "PHP version ${VERSION}."
+bf-echo "PHP version ${VERSION}."
 
 
 #======================================================================================================================
@@ -46,5 +46,5 @@ bf-done
 # Cleanup.
 #======================================================================================================================
 
-bf-debug "Cleanup /www files."
+bf-echo "Cleanup /www files."
 rm -f /www/index.html
