@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.15-1.4.10
+FROM bfren/alpine:alpine<%= ${ALPINE_MINOR} %>-<%= ${BASE_REVISION} %>
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -7,7 +7,7 @@ ENV \
     # disable debug messages by default
     BF_DEBUG=0 \
     # PHP config directory
-    PHP_DIR=/etc/php7 \
+    PHP_DIR=/etc/php<%= ${PHP_MAJOR} %> \
     # php.ini template to use
     PHP_INI="production" \
     # php.ini override: display_errors
@@ -15,15 +15,15 @@ ENV \
     # php.ini override: display_startup_errors
     PHP_INI_DISPLAY_STARTUP_ERRORS= \
     # php.ini override: error_log
-    PHP_INI_ERROR_LOG="/var/log/php7/error.log" \
+    PHP_INI_ERROR_LOG="/var/log/php<%= ${PHP_MAJOR} %>/error.log" \
     # php.ini override: err-r_reporting
     PHP_INI_ERROR_REPORTING= \
     # php.ini override: memory_limit
     PHP_INI_MEMORY_LIMIT="256M"
 
 COPY ./overlay /
-COPY ./7.4/overlay /
-COPY ./7.4/PHP_BUILD /tmp/
+COPY ./<%= ${PHP_MINOR} %>/overlay /
+COPY ./<%= ${PHP_MINOR} %>/PHP_BUILD /tmp/
 
 RUN bf-install
 
