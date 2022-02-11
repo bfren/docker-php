@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.15-1.4.7
+FROM bfren/alpine:alpine3.15-1.4.9
 
 ARG BF_IMAGE
 ARG BF_VERSION
