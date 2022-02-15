@@ -1,6 +1,6 @@
 # Docker PHP
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-php) ![Docker Pulls](https://img.shields.io/docker/pulls/bfren/php?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bfren/php/latest?label=size)<br/>
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-php) ![Docker Pulls](https://img.shields.io/docker/pulls/bfren/php?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bfren/php/php8.0?label=size)<br/>
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-php/dev-7_3?label=PHP+7.3) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-php/dev-7_4?label=PHP+7.4) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-php/dev-7_4-edge?label=PHP+7.4+(edge)) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-php/dev-8_0?label=PHP+8.0) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-php/dev-8_0-edge?label=PHP+8.0+(edge))
 
 [Docker Repository](https://hub.docker.com/r/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
