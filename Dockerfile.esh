@@ -23,7 +23,6 @@ ENV \
 
 COPY ./overlay /
 COPY ./<%= ${PHP_MINOR} %>/overlay /
-COPY ./<%= ${PHP_MINOR} %>/PHP_BUILD /tmp/
 
 RUN bf-install
 

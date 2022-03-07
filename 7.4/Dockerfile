@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.15-1.5.0
+FROM bfren/alpine:alpine3.15-1.5.2
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -23,7 +23,6 @@ ENV \
 
 COPY ./overlay /
 COPY ./7.4/overlay /
-COPY ./7.4/PHP_BUILD /tmp/
 
 RUN bf-install
 
