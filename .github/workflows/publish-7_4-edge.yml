@@ -53,6 +53,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -65,12 +72,16 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bfren/php:edge
             bfren/php:php7-edge
             bfren/php:php7-edge-${{ steps.version.outputs.contents }}
             bfren/php:php7.4-edge
             bfren/php:php7.4-edge-${{ steps.version.outputs.contents }}
             bfren/php:php${{ steps.php_revision.outputs.contents }}-edge
+            ghcr.io/bfren/php:php7-edge
+            ghcr.io/bfren/php:php7-edge-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/php:php7.4-edge
+            ghcr.io/bfren/php:php7.4-edge-${{ steps.version.outputs.contents }}
+            ghcr.io/bfren/php:php${{ steps.php_revision.outputs.contents }}-edge
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
