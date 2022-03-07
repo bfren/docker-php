@@ -23,12 +23,6 @@ jobs:
           file: ./8.0/PHP_REVISION
         id: php_revision
       -
-        name: Read PHP version - build
-        uses: bfren/read-file@v1
-        with:
-          file: ./8.0/PHP_BUILD
-        id: php_build
-      -
         name: Read image version
         uses: bfren/read-file@v1
         with:
@@ -76,7 +70,6 @@ jobs:
             bfren/php:php8.0-${{ steps.version_minor.outputs.contents }}
             bfren/php:php8.0-${{ steps.version.outputs.contents }}
             bfren/php:php${{ steps.php_revision.outputs.contents }}
-            bfren/php:php${{ steps.php_build.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

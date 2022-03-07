@@ -23,7 +23,6 @@ ENV \
 
 COPY ./overlay /
 COPY ./8.0/overlay /
-COPY ./8.0/PHP_BUILD /tmp/
 
 RUN bf-install
 
