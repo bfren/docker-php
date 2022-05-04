@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.15-1.5.14
+FROM bfren/alpine:alpine3.15-1.5.17
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
