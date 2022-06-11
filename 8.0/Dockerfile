@@ -9,7 +9,7 @@ ENV \
     # disable debug messages by default
     BF_DEBUG=0 \
     # PHP config directory
-    PHP_DIR=/etc/php8 \
+    PHP_DIR="/etc/php8" \
     # php.ini template to use
     PHP_INI="production" \
     # php.ini override: display_errors
