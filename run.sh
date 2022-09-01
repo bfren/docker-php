@@ -1,7 +1,7 @@
 #!/bin/sh
 
 IMAGE=`cat VERSION`
-PHP=${1:-8.0}
+PHP=${1:-8.1}
 
 docker buildx build \
     --build-arg BF_IMAGE=php \
