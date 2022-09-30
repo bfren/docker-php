@@ -8,13 +8,13 @@ set -euo pipefail
 #======================================================================================================================
 
 apk add --no-cache \
-    php82@test=${1} \
-    php82-common@test=${1}
+    php82=${1} \
+    php82-common=${1}
 
 
 #======================================================================================================================
 # Create symlinks so PHP can be called on the commandline using php and php-fpm.
 #======================================================================================================================
 
-ln -s /usr/bin/php82 /usr/bin/php
-ln -s /usr/sbin/php-fpm82 /usr/sbin/php-fpm
+[[ ! -e /usr/bin/php ]] && ln -s /usr/bin/php82 /usr/bin/php
+[[ ! -e /usr/sbin/php-fpm ]] && ln -s /usr/sbin/php-fpm82 /usr/sbin/php-fpm

@@ -8,12 +8,13 @@ set -euo pipefail
 #======================================================================================================================
 
 apk add --no-cache \
-    php7@edgetest=${1} \
-    php7-common@edgetest=${1}
+    php7=${1} \
+    php7-common=${1}
 
 
 #======================================================================================================================
-# Create symlink so PHP can be called on the commandline using php-fpm.
+# Create symlinks so PHP can be called on the commandline using php and php-fpm.
 #======================================================================================================================
 
-ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm
+[[ ! -e /usr/bin/php ]] && ln -s /usr/bin/php7 /usr/bin/php
+[[ ! -e /usr/sbin/php-fpm ]] && ln -s /usr/sbin/php-fpm7 /usr/sbin/php-fpm
