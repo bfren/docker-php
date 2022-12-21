@@ -4,7 +4,7 @@
 
 [Docker Repository](https://hub.docker.com/r/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
 
-PHP (7.3, 7.4, 8.0, 8.1, and 8.2) CLI with minimal PHP packages installed:
+PHP (7.4, 8.0, 8.1 and 8.2) CLI with minimal PHP packages installed:
 
 * `php`
 * `php-common`
