@@ -35,4 +35,4 @@ The following environment variables will override values in `php.ini` (see [here
 
 ## Copyright
 
-> Copyright (c) 2021-2022 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2021-2023 [bfren](https://bfren.dev) (unless otherwise stated)
