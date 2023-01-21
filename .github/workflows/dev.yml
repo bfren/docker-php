@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v3
   build:
     strategy:
+      fail-fast: false
       matrix:
         php: [ "7.4", "8.0", "8.1", "8.2" ]
     runs-on: ubuntu-latest
@@ -66,8 +67,6 @@ jobs:
           tags: |
             bfren/php:php${{ matrix.php }}-dev
             bfren/php:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/php:php${{ matrix.php }}-dev
-            ghcr.io/bfren/php:php${{ matrix.php }}-${{ steps.version.outputs.contents }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
