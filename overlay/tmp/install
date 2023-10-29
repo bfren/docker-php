@@ -11,6 +11,9 @@ def main [] {
     bf write $"Installing PHP v($version)."
     ^nu install-php $version
 
+    # save PHP version to build log
+    bf build add PHP $version
+
     # download production php.ini file
     bf-php ini
 
