@@ -1,20 +1,20 @@
-#!/bin/sh
+#!/usr/bin/nu
 
-set -euo pipefail
+use bf
 
+# Install PHP $version
+def main [
+    version: string
+] {
+    # install packages
+    bf pkg install [
+        $"php8=($version)"
+        $"php8-common=($version)"
+    ]
 
-#======================================================================================================================
-# Install PHP8.
-#======================================================================================================================
-
-apk add --no-cache \
-    php8=${1} \
-    php8-common=${1}
-
-
-#======================================================================================================================
-# Create symlinks so PHP can be called on the commandline using php and php-fpm.
-#======================================================================================================================
-
-[[ ! -e /usr/bin/php ]] && ln -s /usr/bin/php8 /usr/bin/php
-[[ ! -e /usr/sbin/php-fpm ]] && ln -s /usr/sbin/php-fpm8 /usr/sbin/php-fpm
+    # create symlinks so PHP can be called on the commandline using php and php-fpm
+    let php = "/usr/bin/php"
+    let fpm = "/usr/sbin/php-fpm"
+    if ($php | path type) != "symlink" { ^ln -sf /usr/bin/php8 $php }
+    if ($fpm | path type) != "symlink" { ^ln -sf /usr/sbin/php-fpm8 $fpm }
+}

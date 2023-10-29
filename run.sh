@@ -5,6 +5,7 @@ PHP=${1:-8.1}
 
 docker buildx build \
     --load \
+    --progress plain \
     --build-arg BF_IMAGE=php \
     --build-arg BF_VERSION=${IMAGE} \
     -f ${PHP}/Dockerfile \
