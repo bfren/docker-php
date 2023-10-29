@@ -4,15 +4,15 @@ set -euo pipefail
 
 docker pull bfren/alpine
 
-BASE_REVISION="1.8.7"
-echo "Base: ${BASE_REVISION}"
+BASE_VERSION="2.0.0-dev"
+echo "Base: ${BASE_VERSION}"
 
 PHP_VERSIONS="7.4 8.0 8.1 8.2"
 for V in ${PHP_VERSIONS} ; do
 
     echo "PHP ${V}"
     PHP_MAJOR="$(echo ${V} | cut -c 1)"
-    ALPINE_MINOR=`cat ./${V}/ALPINE_MINOR`
+    ALPINE_EDITION=`cat ./${V}/ALPINE_MINOR`
 
     if [ "${V}" = "8.1" ] ; then
         PHP_DIR="/etc/php81"
@@ -30,8 +30,8 @@ for V in ${PHP_VERSIONS} ; do
         -e BF_DEBUG=0 \
         bfren/alpine esh \
         "/ws/Dockerfile.esh" \
-        BASE_REVISION=${BASE_REVISION} \
-        ALPINE_MINOR=${ALPINE_MINOR} \
+        BASE_VERSION=${BASE_VERSION} \
+        ALPINE_EDITION=${ALPINE_EDITION} \
         PHP_MAJOR=${PHP_MAJOR} \
         PHP_MINOR=${V} \
         PHP_DIR=${PHP_DIR} \
