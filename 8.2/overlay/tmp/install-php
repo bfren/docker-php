@@ -7,10 +7,7 @@ def main [
     version: string
 ] {
     # install packages
-    bf pkg install [
-        $"php82=($version)"
-        $"php82-common=($version)"
-    ]
+    bf pkg install [$"php82=($version)"]
 
     # create symlinks so PHP can be called on the commandline using php and php-fpm
     let php = "/usr/bin/php"
