@@ -12,6 +12,8 @@ ENV \
     BF_PHP_DIR="/etc/php81" \
     # php.ini template to use
     BF_PHP_INI="production" \
+    # prevent Nginx from passing requests to the PHP-FPM backend if the file does not exist
+    BF_PHP_INI_CGI_FIX_PATHINFO=0 \
     # php.ini override: display_errors
     BF_PHP_INI_DISPLAY_ERRORS= \
     # php.ini override: display_startup_errors

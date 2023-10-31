@@ -4,6 +4,7 @@ use ini.nu
 # Download and setup php.ini
 export def main [] {
     ini {
+        "cgi.fix_pathinfo":         (bf env PHP_INI_CGI_FIX_PATHINFO)
         "display_errors":           (bf env PHP_INI_DISPLAY_ERRORS)
         "display_startup_errors":   (bf env PHP_INI_DISPLAY_STARTUP_ERRORS)
         "error_log":                (bf env PHP_INI_ERROR_LOG)
