@@ -12,4 +12,4 @@ docker buildx build \
     -t php${PHP}-dev \
     . \
     && \
-    docker run -it php${PHP}-dev sh
+    docker run -it -e BF_DEBUG=1 -e BF_PHP_ENV=development -v $PWD/php-ini-sample.json:/php-ini.json:ro php${PHP}-dev sh

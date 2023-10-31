@@ -4,10 +4,9 @@
 
 [Docker Repository](https://hub.docker.com/r/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
 
-PHP (7.4, 8.0, 8.1 and 8.2) CLI with minimal PHP packages installed:
+PHP (7.4, 8.0, 8.1 and 8.2) CLI with no additional packages installed.
 
-* `php`
-* `php-common`
+To override values in php.ini map a `php-ini.json` file to root - see `php-ini-sample.json`.
 
 ## Contents
 
@@ -18,16 +17,7 @@ PHP (7.4, 8.0, 8.1 and 8.2) CLI with minimal PHP packages installed:
 
 | Variable  | Values                        | Description                                                                    | Default      |
 | --------- | ----------------------------- | ------------------------------------------------------------------------------ | ------------ |
-| `PHP_INI` | 'production' or 'development' | Defines which official php.ini template to use, "production" or "development". | 'production' |
-
-The following environment variables will override values in `php.ini` (see [here](https://www.php.net/manual/en/ini.list.php)):
-
-| Variable                         | Directive              | Default Value |
-| -------------------------------- | ---------------------- | ------------- |
-| `PHP_INI_DISPLAY_ERRORS`         | display_errors         | *None*        |
-| `PHP_INI_DISPLAY_STARTUP_ERRORS` | display_startup_errors | *None*        |
-| `PHP_INI_ERROR_REPORTING`        | error_reporting        | *None*        |
-| `PHP_INI_MEMORY_LIMIT`           | memory_limit           | 256M          |
+| `PHP_ENV` | 'production' or 'development' | Defines which official php.ini template to use, "production" or "development". | 'production' |
 
 ## Licence
 
