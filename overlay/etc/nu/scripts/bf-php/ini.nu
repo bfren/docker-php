@@ -50,7 +50,7 @@ def replace_values [
 
         # replace value in accumulator
         bf write debug $" .. ($key)=($val)" ini/replace_values
-        $acc | str replace --all --multiline $"^;?($key) .*$" $"($key) = ($val)"
+        $acc | str replace --all --multiline $"^;?($key)[ =]+.*$" $"($key) = ($val)"
     }
 }
 
@@ -60,6 +60,7 @@ export def replace_values_in_file [
     values: record  # use these key/value pairs to replace values in $file
 ] {
     # read initial file values
+    bf write debug $"Loading values from ($file)." ini/replace_values_in_file
     let initial = bf fs read $file
 
     # replace values and save file
