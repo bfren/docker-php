@@ -9,7 +9,11 @@ def main [] {
     cd /tmp
     let version = bf fs read ./PHP_BUILD
     bf write $"Installing PHP v($version)."
-    ^nu install-php $version
+    bf pkg install [$"(bf env PHP_PREFIX)=($version)"]
+
+    # create symlinks so PHP can be called on the commandline using php
+    let php = "/usr/bin/php"
+    if ($php | path type) != "symlink" { ^ln -sf $"/usr/bin/(bf env PHP_PREFIX)" $php }
 
     # save PHP version to build log
     bf build add PHP $version

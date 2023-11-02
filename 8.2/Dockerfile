@@ -12,7 +12,9 @@ ENV \
     # PHP config directory
     BF_PHP_DIR="/etc/php82" \
     # offical php.ini template to download
-    BF_PHP_ENV="production"
+    BF_PHP_ENV="production" \
+    # PHP package prefix
+    BF_PHP_PREFIX="php82"
 
 RUN bf-install
 

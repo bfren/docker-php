@@ -12,7 +12,9 @@ ENV \
     # PHP config directory
     BF_PHP_DIR="<%= ${PHP_DIR} %>" \
     # offical php.ini template to download
-    BF_PHP_ENV="production"
+    BF_PHP_ENV="production" \
+    # PHP package prefix
+    BF_PHP_PREFIX="<%= ${PHP_PREFIX} %>"
 
 RUN bf-install
 
