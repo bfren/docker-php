@@ -42,7 +42,7 @@ def replace_values [
     values: record  # use these key/value pairs to replace values in $initial
 ] {
     # loop through each key/value pair and replace values
-    bf write debug $"Replacing php.ini values." ini/replace_values
+    bf write debug $"Replacing values:" ini/replace_values
     $values | transpose key val | reduce --fold $initial {|x, acc|
         # trim key and value
         let key = $x.key | str trim
