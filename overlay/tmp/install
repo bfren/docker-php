@@ -23,4 +23,7 @@ def main [] {
 
     # make init script executable
     ^chmod +x /init
+
+    # add bf-php module to config
+    bf config use bf-php
 }
