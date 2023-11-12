@@ -7,7 +7,7 @@ use bf-php
 def main [] {
     # get PHP version and call installation script
     cd /tmp
-    let version = bf fs read ./PHP_BUILD
+    let version = bf fs read PHP_BUILD
     bf write $"Installing PHP v($version)."
     bf pkg install [$"(bf env PHP_PREFIX)=($version)"]
 
