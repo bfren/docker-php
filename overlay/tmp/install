@@ -1,49 +1,29 @@
-#!/bin/sh
+#!/usr/bin/nu
 
-set -euo pipefail
-export BF_E=`basename ${0}`
+use bf
+use bf-php
 
+# Setup and install PHP
+def main [] {
+    # get PHP version and call installation script
+    cd /tmp
+    let version = bf fs read PHP_BUILD
+    bf write $"Installing PHP v($version)."
+    bf pkg install [$"(bf env PHP_PREFIX)=($version)"]
 
-#======================================================================================================================
-# Make init and PHP ini scripts executable.
-#======================================================================================================================
+    # create symlinks so PHP can be called on the commandline using php
+    let php = "/usr/bin/php"
+    if ($php | path type) != "symlink" { ^ln -sf $"/usr/bin/(bf env PHP_PREFIX)" $php }
 
-chmod +x /init
+    # save PHP version to build log
+    bf build add PHP $version
 
+    # download production php.ini file
+    bf-php ini
 
-#======================================================================================================================
-# Get PHP version.
-#======================================================================================================================
+    # make init script executable
+    ^chmod +x /init
 
-cd /tmp
-
-VERSION=$(cat PHP_BUILD)
-bf-echo "PHP version ${VERSION}."
-
-
-#======================================================================================================================
-# Install PHP dependencies and packages.
-#   (bash is required for php.ini configuration.)
-#======================================================================================================================
-
-bf-echo "Installing dependencies..."
-apk add --no-cache \
-    bash
-bf-done
-
-bf-echo "Installing PHP v${VERSION}..."
-chmod +x ./install-php && ./install-php ${VERSION}
-bf-done
-
-URL="https://raw.githubusercontent.com/php/php-src/master/php.ini-production"
-bf-echo "Downloading php.ini from ${URL}..."
-wget -O ${PHP_DIR}/php.ini ${URL}
-bf-done
-
-
-#======================================================================================================================
-# Cleanup.
-#======================================================================================================================
-
-bf-echo "Cleanup /www files."
-rm -f /www/index.html
+    # add bf-php module to config
+    bf config use bf-php
+}
