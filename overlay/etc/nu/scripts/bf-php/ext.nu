@@ -2,13 +2,12 @@ use bf
 
 # Install a list of PHP extensions
 export def install [
-    extensions: list<string>    # List of extensions to install - PHP prefix and build version will be added
+    extensions: list<string>    # List of extensions to install - PHP prefix will be added
 ] {
-    # get prefix and PHP version from build log
+    # get PHP prefix
     let prefix = bf env PHP_PREFIX
-    let version = bf build | get "PHP"
 
     # build and install list of packages
-    let packages = $extensions | each {|x| $"($prefix)-($x)=($version)" }
+    let packages = $extensions | each {|x| $"($prefix)-($x)" }
     bf pkg install $packages
 }
