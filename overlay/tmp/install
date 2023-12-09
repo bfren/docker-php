@@ -15,6 +15,13 @@ def main [] {
     let php = "/usr/bin/php"
     if ($php | path type) != "symlink" { ^ln -sf $"/usr/bin/(bf env PHP_PREFIX)" $php }
 
+    # install requested extensions
+    let extensions = bf env --safe PHP_EXT
+    if $extensions != "" {
+        bf write $"Installation PHP extensions: ($extensions)."
+        bf-php ext install ($extensions | split row " ")
+    }
+
     # save PHP version to build log
     bf build add PHP $version
 
