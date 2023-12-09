@@ -1,4 +1,4 @@
-FROM bfren/alpine:alpine3.18-2.0.5
+FROM bfren/alpine:alpine3.19-2.1.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
@@ -13,6 +13,8 @@ ENV \
     BF_PHP_DIR="/etc/php81" \
     # offical php.ini template to download
     BF_PHP_ENV="production" \
+    # space-separated extensions to install
+    BF_PHP_EXT= \
     # PHP package prefix
     BF_PHP_PREFIX="php81"
 
