@@ -13,6 +13,8 @@ ENV \
     BF_PHP_DIR="<%= ${PHP_DIR} %>" \
     # offical php.ini template to download
     BF_PHP_ENV="production" \
+    # space-separated extensions to install
+    BF_PHP_EXT= \
     # PHP package prefix
     BF_PHP_PREFIX="<%= ${PHP_PREFIX} %>"
 

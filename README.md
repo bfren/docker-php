@@ -4,7 +4,7 @@
 
 [Docker Repository](https://hub.docker.com/r/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
 
-PHP (7.4, 8.0, 8.1 and 8.2) CLI with no additional packages installed.
+PHP (7.4, 8.0, 8.1, 8.2 and 8.3) CLI with no additional packages installed.
 
 To override values in php.ini map a `php-ini.json` file to root - see `php-ini-sample.json`.
 
@@ -15,9 +15,12 @@ To override values in php.ini map a `php-ini.json` file to root - see `php-ini-s
 
 ## Environment Variables
 
-| Variable  | Values                        | Description                                                                    | Default      |
-| --------- | ----------------------------- | ------------------------------------------------------------------------------ | ------------ |
-| `PHP_ENV` | 'production' or 'development' | Defines which official php.ini template to use, "production" or "development". | 'production' |
+| Variable          | Values                        | Description                                                                       | Default       |
+| ----------------- | ----------------------------- | --------------------------------------------------------------------------------- | ------------- |
+| `BF_PHP_DIR`      | *path*                        | Path to the PHP configuration directory - should not normally need to be changed. | '/etc/php82'  |
+| `BF_PHP_ENV`      | 'production' or 'development' | Defines which official php.ini template to use, "production" or "development".    | 'production'  |
+| `BF_PHP_EXT`      | *space-separated string*      | List of PHP extensions to install.                                                | *blank*       |
+| `BF_PHP_PREFIX`   | *php82 (etc)*                 | PHP version prefix for package install - should not normally need to be changed.  | 'php82'       |
 
 ## Licence
 
