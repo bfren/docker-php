@@ -1,8 +1,9 @@
-FROM bfren/alpine:alpine3.19-2.1.3
+FROM bfren/alpine:alpine3.19-2.2.3
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
 ARG BF_IMAGE
+ARG BF_PUBLISHING
 ARG BF_VERSION
 
 COPY ./overlay /
