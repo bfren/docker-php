@@ -3,6 +3,7 @@ FROM bfren/alpine:alpine<%= ${ALPINE_EDITION} %>-<%= ${BASE_VERSION} %>
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
 ARG BF_IMAGE
+ARG BF_PUBLISHING
 ARG BF_VERSION
 
 COPY ./overlay /
