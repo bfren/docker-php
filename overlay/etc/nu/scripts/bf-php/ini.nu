@@ -12,7 +12,7 @@ export def main [
     download $file (bf env PHP_ENV)
 
     # replace values
-    if $values != null { replace_values_in_file $file $values }
+    if ($values | is-not-empty) { replace_values_in_file $file $values }
 }
 
 # Download a standard php.ini file unless it has already been downloaded
