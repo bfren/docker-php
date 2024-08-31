@@ -12,7 +12,7 @@ export def main [
     download $file (bf env PHP_ENV)
 
     # replace values
-    if ($values | is-not-empty) { replace_values_in_file $file $values }
+    if ($values | is-not-empty) { insert_or_replace_values_in_file $file $values }
 }
 
 # Download a standard php.ini file unless it has already been downloaded
@@ -36,13 +36,13 @@ def download [
     $environment | save --force $downloaded
 }
 
-# Replace configuration settings in a php.ini format using $values
-def replace_values [
+# Insert or replace configuration settings in a php.ini format using $values
+def insert_or_replace_values [
     initial: string # initial php.ini contents
-    values: record  # use these key/value pairs to replace values in $initial
+    values: record  # use these key/value pairs to insert or replace values in $initial
 ] {
-    # loop through each key/value pair and replace values
-    bf write debug $"Replacing values:" ini/replace_values
+    # loop through each key/value pair and insert or replace
+    bf write debug $"Replacing values:" ini/insert_or_replace_values
     $values | transpose key val | reduce --fold $initial {|x, acc|
         # trim key and value
         let key = $x.key | str trim
@@ -51,21 +51,26 @@ def replace_values [
         # ignore empty keys / values
         if $key == "" or $val == "" { return $acc }
 
-        # replace value in accumulator
-        bf write debug $" .. ($key)=($val)" ini/replace_values
-        $acc | str replace --all --multiline $"^;?($key)[ =]+.*$" $"($key) = ($val)"
+        # replace or insert the key/value
+        if ($acc | str contains $key) {
+            bf write debug $" .. ($key)=($val) \(replace)" ini/insert_or_replace_values
+            $acc | str replace --all --multiline $"^;?($key)[ =]+.*$" $"($key) = ($val)"
+        } else {
+            bf write debug $" .. ($key)=($val) \(insert)" ini/insert_or_replace_values
+            $acc + $"\n($key) = ($val)"
+        }
     }
 }
 
-# Replace configuration settings in a file of php.ini format using $values
-export def replace_values_in_file [
-    file: string    # file to read values from and then replace with $values
-    values: record  # use these key/value pairs to replace values in $file
+# Insert or replace configuration settings in a file of php.ini format using $values
+export def insert_or_replace_values_in_file [
+    file: string    # file to read values from and then insert or replace with $values
+    values: record  # use these key/value pairs to insert or replace values in $file
 ] {
     # read initial file values
-    bf write debug $"Loading values from ($file)." ini/replace_values_in_file
+    bf write debug $"Loading values from ($file)." ini/insert_or_replace_values_in_file
     let initial = bf fs read $file
 
-    # replace values and save file
-    replace_values $initial $values | save --force $file
+    # insert or replace values and save file
+    insert_or_replace_values $initial $values | save --force $file
 }
