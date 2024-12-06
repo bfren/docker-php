@@ -7,17 +7,17 @@ ARG BF_PUBLISHING
 ARG BF_VERSION
 
 COPY ./overlay /
-COPY ./8.3/overlay /
+COPY ./8.4/overlay /
 
 ENV \
     # PHP config directory
-    BF_PHP_DIR="/etc/php83" \
+    BF_PHP_DIR="/etc/php84" \
     # offical php.ini template to download
     BF_PHP_ENV="production" \
     # space-separated extensions to install
     BF_PHP_EXT= \
     # PHP package prefix
-    BF_PHP_PREFIX="php83"
+    BF_PHP_PREFIX="php84"
 
 RUN bf-install
 
