@@ -45,7 +45,7 @@ def insert_or_replace_values [
     bf write debug $"Replacing values:" ini/insert_or_replace_values
     $values | transpose key val | reduce --fold $initial {|x, acc|
         # trim key and value
-        let key = $x.key | into string | str trim
+        let key = $x.key | str trim
         let val = $x.val | into string | str trim
 
         # ignore empty keys / values
