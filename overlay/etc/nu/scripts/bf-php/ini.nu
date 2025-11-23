@@ -30,7 +30,7 @@ def download [
     # download file
     let url = $"https://raw.githubusercontent.com/php/php-src/master/php.ini-($environment)"
     bf write debug $"Downloading php.ini from ($url)." ini/download
-    http get --raw $url | save --force $file
+    bf http download $url $file
 
     # mark as downloaded
     $environment | save --force $downloaded
