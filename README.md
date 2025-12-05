@@ -4,7 +4,7 @@
 
 [Docker Repository](https://hub.docker.com/r/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
 
-PHP (7.4, 8.0, 8.1, 8.2 and 8.3) CLI with no additional packages installed.
+PHP (7.4, 8.0, 8.1, 8.2, 8.3, 8.4 and 8.5) CLI with no additional packages installed.
 
 To override values in php.ini map a `php-ini.json` file to root - see `php-ini-sample.json`.
 
