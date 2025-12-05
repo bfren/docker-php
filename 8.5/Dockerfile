@@ -1,4 +1,4 @@
-FROM quay.io/bfren/alpine:alpine3.19-3.1.0
+FROM quay.io/bfren/alpine:alpine3.23-3.1.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
@@ -7,17 +7,17 @@ ARG BF_PUBLISHING
 ARG BF_VERSION
 
 COPY ./overlay /
-COPY ./8.1/overlay /
+COPY ./8.5/overlay /
 
 ENV \
     # PHP config directory
-    BF_PHP_DIR="/etc/php81" \
+    BF_PHP_DIR="/etc/php85" \
     # offical php.ini template to download
     BF_PHP_ENV="production" \
     # space-separated extensions to install
     BF_PHP_EXT= \
     # PHP package prefix
-    BF_PHP_PREFIX="php81"
+    BF_PHP_PREFIX="php85"
 
 RUN bf-install
 
