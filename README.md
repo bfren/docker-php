@@ -28,4 +28,4 @@ To override values in php.ini map a `php-ini.json` file to root - see `php-ini-s
 
 ## Copyright
 
-> Copyright (c) 2021-2025 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2021-2026 [bfren](https://bfren.dev) (unless otherwise stated)
