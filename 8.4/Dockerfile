@@ -1,4 +1,4 @@
-FROM quay.io/bfren/alpine:alpine3.23-3.1.2
+FROM quay.io/bfren/alpine:alpine3.23-3.1.3
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-php"
 
