@@ -28,6 +28,7 @@ for V in ${PHP_VERSIONS} ; do
     )
 
     echo "${DOCKERFILE}" > ./${V}/Dockerfile
+    echo "https://pkgs.alpinelinux.org/packages?name=${PHP_PREFIX}&branch=v${ALPINE_EDITION}&repo=&arch=x86_64" > ./${V}/PKG.url
 
 done
 
