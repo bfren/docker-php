@@ -1,5 +1,5 @@
 use bf
-use ini.nu
+use bf-php/ini
 
 # Download and setup php.ini
 export def main [] {

@@ -7,8 +7,8 @@ set -euo pipefail
 # Store incoming environment and initialise
 #======================================================================================================================
 
-nu -c "use bf env ; env store" > /dev/null
-nu -c "use bf-php init ; init"
+nu -c "use bf/env store ; store" > /dev/null
+nu -c "use bf-php/init ; init"
 
 
 #======================================================================================================================
