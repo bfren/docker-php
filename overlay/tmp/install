@@ -32,5 +32,5 @@ def main [] {
     ^chmod +x /init
 
     # add bf-php module to config
-    bf config use bf-php
+    bf config use_mod bf-php
 }
