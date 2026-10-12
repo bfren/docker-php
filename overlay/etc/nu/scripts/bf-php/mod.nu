@@ -1,3 +1,3 @@
-export module ext.nu
-export module ini.nu
-export module init.nu
+export use ext.nu
+export use ini.nu
+export use init.nu
