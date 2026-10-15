@@ -6,9 +6,10 @@ use bf
 # helpers
 #======================================================================================================================
 
-# The php.ini file PHP has loaded, e.g. /etc/php85/php.ini
+# The php.ini file PHP has loaded, e.g. /etc/php85/php.ini - asked of PHP directly, as the format of 'php --ini' varies
+# between versions (8.5 puts quotes around the path)
 def loaded_ini []: nothing -> string {
-    ^php --ini | lines | where {|x| $x | str starts-with "Loaded Configuration File:" } | first | split row ":" | last | str trim
+    ^php -r "echo php_ini_loaded_file();" | str trim
 }
 
 
