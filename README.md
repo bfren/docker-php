@@ -33,7 +33,7 @@ docker run --rm -v ./:/ws quay.io/bfren/php:php8.5 -f script.php
 ## Features
 
 * 🐘 PHP 7.4, 8.0, 8.1, 8.2, 8.3, 8.4 and 8.5 - choose with the image tag
-* 📄 The official `php.ini-production` (or `-development`) file, downloaded from the PHP source
+* 📄 The official `php.ini-production` (or `-development`) file for your PHP version, downloaded from the PHP source
 * ⚙️ Override any `php.ini` value with a small JSON file
 * 🧩 Add extensions by name with `bf-php ext install`
 * 🖥️ Built for `linux/amd64`, `linux/arm64` and `linux/arm/v7`
@@ -98,7 +98,7 @@ There is no default command - `docker run bfren/php` on its own does nothing.
 
 ### `php.ini`
 
-When the image is built, the official `php.ini-production` file is downloaded from the PHP source on GitHub. At every start:
+When the image is built, the official `php.ini-production` file is downloaded from the PHP source on GitHub, from the branch for the installed version (e.g. `PHP-8.5`). At every start:
 
 * if `BF_PHP_ENV` asks for a different file (`development`), that file is downloaded instead - so the container needs internet access the first time
 * if `/php-ini.json` exists, each of its values is set in `php.ini`, replacing the existing line or adding a new one
@@ -163,7 +163,7 @@ Put your installation steps (e.g. extensions) in `overlay/tmp/install`. See [Alp
 ./run.sh         # builds the PHP 8.5 image in development mode, with php-ini-sample.json applied, and opens a shell
 ```
 
-This image has no tests of its own. `/test` runs the tests inherited from Alpine, and fails if tests don't execute.
+`/test` runs this image's tests alongside Alpine's, and fails if tests don't execute. They check that PHP runs and matches the version in the build log, that `php` links to the versioned executable and loads the downloaded `php.ini`, how `php.ini` values are replaced or added, and how extension names become package names.
 
 ## Troubleshooting
 
