@@ -36,11 +36,10 @@ docker run --rm -v ./:/ws quay.io/bfren/php:php8.5 -f script.php
 * 📄 The official `php.ini-production` (or `-development`) file for your PHP version, downloaded from the PHP source
 * ⚙️ Override any `php.ini` value with a small JSON file
 * 🧩 Add extensions by name with `bf-php ext install`
-* 🖥️ Built for `linux/amd64`, `linux/arm64` and `linux/arm/v7`
 
 ## Tags
 
-Images are published to Docker Hub (`bfren/php`) and Quay.io (`quay.io/bfren/php`). Tags start with the PHP version.
+Images are published to Docker Hub (`bfren/php`) and Quay.io (`quay.io/bfren/php`) for `linux/amd64`, `linux/arm/v7` and `linux/arm64`. Tags start with the PHP version.
 
 | Tag                            | Example            | Use when                                              |
 | ------------------------------ | ------------------ | ----------------------------------------------------- |
