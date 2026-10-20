@@ -27,13 +27,19 @@ def download [
         return
     }
 
-    # download file
-    let url = $"https://raw.githubusercontent.com/php/php-src/master/php.ini-($environment)"
+    # download file from the branch for the installed version of PHP (master is the next, unreleased, version)
+    let url = $"https://raw.githubusercontent.com/php/php-src/(branch)/php.ini-($environment)"
     bf write debug $"Downloading php.ini from ($url)." ini/download
     bf http download $url $file
 
     # mark as downloaded
     $environment | save --force $downloaded
+}
+
+# The php-src branch for the installed version of PHP, e.g. PHP-8.5
+export def branch []: nothing -> string {
+    let version = { ^php -r "echo PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION;" } | bf handle ini/branch
+    $"PHP-($version)"
 }
 
 # Insert or replace configuration settings in a php.ini format using $values
@@ -51,10 +57,12 @@ def insert_or_replace_values [
         # ignore empty keys / values
         if $key == "" or $val == "" { return $acc }
 
-        # replace or insert the key/value
-        if ($acc | str contains $key) {
+        # replace the key/value if there is a setting line for it (commented out or not), otherwise insert it
+        # (checking for the key anywhere would match it in comments, and the value would never be set)
+        let escaped = $key | str replace --all "." "\\."
+        if ($acc =~ $"\(?m\)^;?($escaped)[ =]") {
             bf write debug $" .. ($key)=($val) \(replace)" ini/insert_or_replace_values
-            $acc | str replace --all --multiline $"^;?($key)[ =]+.*$" $"($key) = ($val)"
+            $acc | str replace --all --multiline $"^;?($escaped)[ =]+.*$" $"($key) = ($val)"
         } else {
             bf write debug $" .. ($key)=($val) \(insert)" ini/insert_or_replace_values
             $acc + $"\n($key) = ($val)"

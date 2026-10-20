@@ -4,12 +4,7 @@ use bf
 export def install [
     extensions: list<string>    # List of extensions to install - PHP prefix will be added
 ] {
-    # get PHP prefix
-    let prefix = bf env PHP_PREFIX
-
-    # build and install list of packages
-    let packages = $extensions | each {|x| $"($prefix)-($x)" }
-    bf pkg install $packages
+    bf pkg install (packages $extensions)
 }
 
 # Install PHP extensions listed in a text file:
@@ -22,18 +17,26 @@ export def install_from_file [
     # ensure the file exists
     if ($file | bf fs is_not_file) { return }
 
-    # get PHP prefix
-    let prefix = bf env PHP_PREFIX
-
-    # read file into a list of prefixed packages
-    let packages = bf fs read $file | lines | each {|x|
-        if ($x | str starts-with "-" ) {
-            $"($prefix)($x)"
-        } else {
-            $x
-        }
-    }
-
     # install packages
-    bf pkg install $packages
+    bf pkg install (packages_from_file $file)
+}
+
+# Get the package names for a list of extensions, by adding the PHP prefix, e.g. 'mbstring' becomes 'php85-mbstring'
+export def packages [
+    extensions: list<string>    # List of extensions
+]: nothing -> list<string> {
+    let prefix = bf env PHP_PREFIX
+    $extensions | each {|x| $"($prefix)-($x)" }
+}
+
+# Get the package names listed in a text file - see install_from_file
+export def packages_from_file [
+    file: string    # Path to the file
+]: nothing -> list<string> {
+    let prefix = bf env PHP_PREFIX
+    bf fs read $file
+        | lines
+        | str trim
+        | where $it != ""
+        | each {|x| if ($x | str starts-with "-") { $"($prefix)($x)" } else { $x } }
 }
