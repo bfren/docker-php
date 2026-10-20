@@ -158,8 +158,9 @@ Put your installation steps (e.g. extensions) in `overlay/tmp/install`. See [Alp
 ## Testing
 
 ```sh
-./test.sh        # builds the PHP 8.5 image and runs /test
-./test.sh 8.2    # the same for PHP 8.2
+./test.nu        # builds the PHP 8.5 image and runs /test
+./test.nu 8.2    # the same for PHP 8.2
+./test.nu --all  # every version, in parallel
 ./run.sh         # builds the PHP 8.5 image in development mode, with php-ini-sample.json applied, and opens a shell
 ```
 
