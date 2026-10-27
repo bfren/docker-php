@@ -6,7 +6,7 @@
 
 ## Introduction
 
-A small image for running [PHP](https://www.php.net) on the command line - scripts, Composer-style tools, scheduled jobs - with PHP 7.4 to 8.5 from Alpine's own packages.
+A small image for running [PHP](https://www.php.net) on the command line - scripts, Composer-style tools, scheduled jobs - with PHP 7.2 to 8.5 from Alpine's own packages.
 
 It is [Alpine](https://github.com/bfren/docker-alpine) with:
 
@@ -32,7 +32,7 @@ docker run --rm -v ./:/ws quay.io/bfren/php:php8.5 -f script.php
 
 ## Features
 
-* 🐘 PHP 7.4, 8.0, 8.1, 8.2, 8.3, 8.4 and 8.5 - choose with the image tag
+* 🐘 PHP 8.2, 8.3, 8.4 and 8.5 - choose with the image tag
 * 📄 The official `php.ini-production` (or `-development`) file for your PHP version, downloaded from the PHP source
 * ⚙️ Override any `php.ini` value with a small JSON file
 * 🧩 Add extensions by name with `bf-php ext install`
@@ -59,11 +59,6 @@ Each PHP version is built on the Alpine release that packages it:
 | 8.4 | 8.4.26  | 3.24   | 2028-12-31                |
 | 8.3 | 8.3.35  | 3.24   | 2027-12-31                |
 | 8.2 | 8.2.33  | 3.22   | 2026-12-31                |
-| 8.1 | 8.1.34  | 3.19   | ended 2025-12-31          |
-| 8.0 | 8.0.30  | 3.16   | ended 2023-11-26          |
-| 7.4 | 7.4.33  | 3.15   | ended 2022-11-28          |
-
-PHP 8.1 and older no longer receive security fixes, and nor do the Alpine releases they are built on - use them only for legacy code. [Source: php.net](https://www.php.net/supported-versions.php)
 
 ## Configuration
 
