@@ -1,6 +1,6 @@
 # PHP
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-php) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fphp) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fphp) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-php/dev.yml?branch=main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-php) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fphp) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fphp) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-php/build.yml?branch=main)
 
 [Docker Hub](https://hub.docker.com/r/bfren/php) - [Quay.io](https://quay.io/repository/bfren/php) - [bfren ecosystem](https://github.com/bfren/docker)
 
