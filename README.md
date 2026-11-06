@@ -46,10 +46,10 @@ Images are published to Docker Hub (`bfren/php`) and Quay.io (`quay.io/bfren/php
 | `phpX.Y`                      | `php8.5`          | You want the latest image for a PHP version           |
 | `phpX.Y-MAJOR`                | `php8.5-4`        | You want updates, but not breaking changes            |
 | `phpX.Y-MINOR`                | `php8.5-4.0`      | You want fixes only - **recommended for building on** |
-| `phpX.Y-VERSION`              | `php8.5-4.0.0`    | You want to pin this image exactly                    |
+| `phpX.Y-VERSION`              | `php8.5-4.0.1`    | You want to pin this image exactly                    |
 | `phpX.Y.Z`                    | `php8.5.12`       | You want an exact PHP release                         |
-| `phpX.Y.Z-VERSION`            | `php8.5.12-4.0.0` | You want to pin both                                  |
-| `latest`, `4`, `4.0`, `4.0.0` |                   | As above, on PHP 8.5                                  |
+| `phpX.Y.Z-VERSION`            | `php8.5.12-4.0.1` | You want to pin both                                  |
+| `latest`, `4`, `4.0`, `4.0.1` |                   | As above, on PHP 8.5                                  |
 
 Each PHP version is built on the Alpine release that packages it:
 
