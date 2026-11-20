@@ -46,18 +46,18 @@ Images are published to Docker Hub (`bfren/php`) and Quay.io (`quay.io/bfren/php
 | `phpX.Y`                      | `php8.5`          | You want the latest image for a PHP version           |
 | `phpX.Y-MAJOR`                | `php8.5-4`        | You want updates, but not breaking changes            |
 | `phpX.Y-MINOR`                | `php8.5-4.0`      | You want fixes only - **recommended for building on** |
-| `phpX.Y-VERSION`              | `php8.5-4.0.2`    | You want to pin this image exactly                    |
-| `phpX.Y.Z`                    | `php8.5.12`       | You want an exact PHP release                         |
-| `phpX.Y.Z-VERSION`            | `php8.5.12-4.0.2` | You want to pin both                                  |
-| `latest`, `4`, `4.0`, `4.0.2` |                   | As above, on PHP 8.5                                  |
+| `phpX.Y-VERSION`              | `php8.5-4.0.3`    | You want to pin this image exactly                    |
+| `phpX.Y.Z`                    | `php8.5.13`       | You want an exact PHP release                         |
+| `phpX.Y.Z-VERSION`            | `php8.5.13-4.0.3` | You want to pin both                                  |
+| `latest`, `4`, `4.0`, `4.0.3` |                   | As above, on PHP 8.5                                  |
 
 Each PHP version is built on the Alpine release that packages it:
 
 | PHP | Release | Alpine | PHP security support ends |
 | --- | ------- | ------ | ------------------------- |
-| 8.5 | 8.5.12  | 3.24   | 2029-12-31                |
-| 8.4 | 8.4.27  | 3.24   | 2028-12-31                |
-| 8.3 | 8.3.36  | 3.24   | 2027-12-31                |
+| 8.5 | 8.5.13  | 3.24   | 2029-12-31                |
+| 8.4 | 8.4.28  | 3.24   | 2028-12-31                |
+| 8.3 | 8.3.37  | 3.24   | 2027-12-31                |
 | 8.2 | 8.2.35  | 3.22   | 2026-12-31                |
 
 ## Configuration
