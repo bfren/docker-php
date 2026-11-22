@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - README: the "Building on this image" Dockerfile was missing the `BF_IMAGE` and `BF_VERSION` build arguments,
   so `bf-install` failed when you followed it.
+- README: the `docker run` example now uses the Quay.io image, like the rest of the examples.
 
 ## [4.0.3] - 2026-11-20
 

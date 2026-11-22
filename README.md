@@ -88,7 +88,7 @@ The entrypoint, `/init`, runs before every command:
 2. It runs `bf-php init`, which sets up `php.ini` (below).
 3. It changes to `/ws` and runs your command. If the first argument starts with `-`, it runs `php` with your arguments.
 
-There is no default command - `docker run bfren/php` on its own does nothing.
+There is no default command - `docker run quay.io/bfren/php` on its own does nothing.
 
 ### `php.ini`
 
