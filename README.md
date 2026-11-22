@@ -51,6 +51,8 @@ Images are published to Docker Hub (`bfren/php`) and Quay.io (`quay.io/bfren/php
 | `phpX.Y.Z-VERSION`            | `php8.5.13-4.0.4` | You want to pin both                                  |
 | `latest`, `4`, `4.0`, `4.0.4` |                   | As above, on PHP 8.5                                  |
 
+A new `MAJOR` version means a breaking change. Before moving to one, read the [changelog](CHANGELOG.md), where each breaking change is marked **Breaking**.
+
 Each PHP version is built on the Alpine release that packages it:
 
 | PHP | Release | Alpine | PHP security support ends |
