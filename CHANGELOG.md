@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.4] - 2026-11-25
+
+### Changed
+
+- Base image updated to `bfren/alpine` 4.0.3, which rebuilds BusyBox, figlet and Nushell without changing their
+  versions - see the [Alpine changelog](https://github.com/bfren/docker-alpine/blob/main/CHANGELOG.md).
+
+### Fixed
+
+- README: the "Building on this image" Dockerfile was missing the `BF_IMAGE` and `BF_VERSION` build arguments,
+  so `bf-install` failed when you followed it.
+- README: the `docker run` example now uses the Quay.io image, like the rest of the examples.
+
 ## [4.0.3] - 2026-11-20
 
 ### Changed
@@ -36,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Images are built and published by the shared `bfren/docker` build workflow (`build.yml`), replacing the separate
   `dev.yml` and `publish.yml` workflows.
 
+[4.0.4]: https://github.com/bfren/docker-php/compare/v4.0.3...v4.0.4
 [4.0.3]: https://github.com/bfren/docker-php/compare/v4.0.2...v4.0.3
 [4.0.2]: https://github.com/bfren/docker-php/compare/v4.0.1...v4.0.2
 [4.0.1]: https://github.com/bfren/docker-php/compare/v4.0.0...v4.0.1
